@@ -1,5 +1,6 @@
 # Markdown documentation
 *.md
+!README.md
 
 # JetBrains / IDE local files
 .idea/
