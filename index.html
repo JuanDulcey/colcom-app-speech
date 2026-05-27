@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latinoamérica Comparte - Panel Admin Móvil Premium</title>
+    <meta name="description" content="Gestiona contenidos, solicitudes y auditoría de los portales de Colombia, Ecuador, Argentina y Chile desde la palma de tu mano.">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- ==========================================
+         NAVEGACIÓN SUPERIOR (NAVBAR)
+         ========================================== -->
+    <header class="navbar-container" id="main-header">
+        <div class="nav-content">
+            <a href="#" class="nav-logo">
+                <div class="nav-logo-icon">LA</div>
+                <span class="nav-logo-text">Latam Comparte</span>
+            </a>
+            
+            <ul class="nav-menu">
+                <li class="nav-menu-item"><a href="#inicio">Inicio</a></li>
+                <li class="nav-menu-item"><a href="#caracteristicas">Características</a></li>
+                <li class="nav-menu-item"><a href="#ecosistema">Ecosistema</a></li>
+                <li class="nav-menu-item"><a href="#roles">Roles (RBAC)</a></li>
+                <li class="nav-menu-item"><a href="#galeria">Capturas</a></li>
+                <li class="nav-menu-item"><a href="#asistente">Chatbot</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <button class="theme-toggle" id="theme-toggle-btn" title="Cambiar Tema">
+                    <!-- Icono Sol / Luna en SVG -->
+                    <svg id="theme-svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+                <a href="#descarga" class="btn-header-cta">Descargar APK</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- ==========================================
+         SECCIÓN HERO (PRINCIPAL)
+         ========================================== -->
+    <section class="landing-section" id="inicio" style="padding-bottom: 2rem;">
+        <div class="hero-wrapper">
+            <div class="hero-text-side">
+                <span class="hero-badge">Panel Admin Móvil v1.0.0</span>
+                <h1 class="hero-title">El control total de tus portales. <span>En tu mano.</span></h1>
+                <p class="hero-description">
+                    Latinoamérica Comparte es la herramienta definitiva de administración y CMS móvil. Unifica, edita y gestiona la información de cuatro portales de país (Colombia, Ecuador, Argentina y Chile) de forma segura y optimizada.
+                </p>
+                <div class="hero-actions-container">
+                    <div class="hero-buttons">
+                        <button class="btn-apk-download" id="apk-download-btn">
+                            <span class="btn-apk-loading-bar" id="apk-progress-bar"></span>
+                            <span class="btn-apk-text" id="apk-btn-text">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                                Descargar APK Directo
+                            </span>
+                        </button>
+                        <a href="#galeria" class="btn-secondary-outline">Ver Capturas</a>
+                    </div>
+                    <!-- Insignias de Tiendas Oficiales -->
+                    <div class="store-badges">
+                        <a href="#" class="store-badge-link" title="Próximamente en Google Play">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Disponible en Google Play">
+                        </a>
+                        <a href="#" class="store-badge-link" title="Próximamente en App Store">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg" alt="Disponible en App Store">
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="hero-phone-side">
+                <div class="hero-glow-back"></div>
+                <!-- Celular iPhone flotante mostrando SPLASH SCREEN -->
+                <div class="device-iphone hero-tilt">
+                    <div class="device-island"></div>
+                    <div class="device-screen">
+                        <div class="device-glare"></div>
+                        <img src="assets/capturas/splash.jpg" alt="Pantalla de Carga de la App" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'280\' height=\'570\' viewBox=\'0 0 280 570\'><rect width=\'100%\' height=\'100%\' fill=\'%23070913\'/><text x=\'50%\' y=\'50%\' font-family=\'Outfit\' font-weight=\'bold\' font-size=\'24\' fill=\'%2300f2fe\' text-anchor=\'middle\'>Splash Screen</text></svg>'">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         SECCIÓN CARACTERÍSTICAS CLAVE (GRID)
+         ========================================== -->
+    <section class="landing-section" id="caracteristicas">
+        <div class="section-header-center">
+            <span class="section-tag">Funcionalidades</span>
+            <h2 class="section-main-title">Diseñada para una gestión eficiente y segura</h2>
+            <p class="section-main-desc">Lleva la publicación de contenidos y el control de solicitudes a un nivel profesional con herramientas optimizadas.</p>
+        </div>
+
+        <div class="features-grid">
+            <!-- CMS Content -->
+            <div class="feature-card">
+                <div class="feature-icon-box">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>
+                </div>
+                <h3 class="feature-title">Gestión de Contenido (CMS)</h3>
+                <p class="feature-desc">Crea, edita y publica noticias, artículos informativos y testimonios en tiempo real con una interfaz fluida Material 3.</p>
+            </div>
+
+            <!-- Solicitudes -->
+            <div class="feature-card">
+                <div class="feature-icon-box">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                </div>
+                <h3 class="feature-title">Control de Solicitudes</h3>
+                <p class="feature-desc">Bandeja interactiva con gestos de aprobación o eliminación de peticiones comunitarias y testimonios entrantes.</p>
+            </div>
+
+            <!-- Files -->
+            <div class="feature-card">
+                <div class="feature-icon-box">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="12" y1="18" x2="12" y2="12"></line><line x1="9" y1="15" x2="15" y2="15"></line></svg>
+                </div>
+                <h3 class="feature-title">Archivos y Multimedia</h3>
+                <p class="feature-desc">Carga directa de documentos, imágenes o reportes directamente desde la galería o cámara de tu dispositivo móvil.</p>
+            </div>
+
+            <!-- Audit Trail -->
+            <div class="feature-card">
+                <div class="feature-icon-box">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                </div>
+                <h3 class="feature-title">Auditoría y Trazabilidad</h3>
+                <p class="feature-desc">Historial detallado e inmutable de las operaciones realizadas por los administradores para mantener la transparencia.</p>
+            </div>
+
+            <!-- RBAC -->
+            <div class="feature-card">
+                <div class="feature-icon-box">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                </div>
+                <h3 class="feature-title">Acceso Seguro Basado en Rol</h3>
+                <p class="feature-desc">Control estricto de permisos (RBAC) que oculta o habilita herramientas dependiendo del nivel asignado al usuario.</p>
+            </div>
+
+            <!-- AI chatbot -->
+            <div class="feature-card">
+                <div class="feature-icon-box">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                </div>
+                <h3 class="feature-title">Asistencia con Chatbot</h3>
+                <p class="feature-desc">Chatbot integrado diseñado para resolver dudas sobre operaciones, redactar noticias y proveer métricas del sistema.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         SECCIÓN ECOSISTEMA REGIONAL (INTERACTIVO)
+         ========================================== -->
+    <section class="landing-section" id="ecosistema">
+        <div class="section-header-center">
+            <span class="section-tag">Ecosistema Regional</span>
+            <h2 class="section-main-title">Cuatro portales, un solo panel centralizado</h2>
+            <p class="section-main-desc">Administra el contenido segmentado por países de forma completamente autónoma.</p>
+        </div>
+
+        <div class="ecosystem-container">
+            <!-- Pestañas de países -->
+            <div class="eco-tabs-nav">
+                <button class="eco-tab-btn active" data-eco-country="colombia">
+                    <span class="eco-tab-flag">🇨🇴</span>
+                    <span>Colombia</span>
+                </button>
+                <button class="eco-tab-btn" data-eco-country="ecuador">
+                    <span class="eco-tab-flag">🇪🇨</span>
+                    <span>Ecuador</span>
+                </button>
+                <button class="eco-tab-btn" data-eco-country="argentina">
+                    <span class="eco-tab-flag">🇦🇷</span>
+                    <span>Argentina</span>
+                </button>
+                <button class="eco-tab-btn" data-eco-country="chile">
+                    <span class="eco-tab-flag">🇨🇱</span>
+                    <span>Chile</span>
+                </button>
+            </div>
+
+            <!-- Contenido de las pestañas -->
+            <!-- Colombia -->
+            <div class="eco-tab-content active" id="eco-colombia">
+                <div class="eco-details">
+                    <h3 class="eco-country-title">
+                        Colombia Comparte
+                        <span class="eco-flag-large">🇨🇴</span>
+                    </h3>
+                    <p class="eco-country-desc">
+                        El portal central con el mayor volumen del ecosistema. Desde este nodo coordinas el contenido noticioso principal, la validación de testimonios de emprendimiento comunitario y el soporte de auditoría principal.
+                    </p>
+                    <img class="eco-badge-img" src="assets/logos/logo-colombia-comparte-bandera.png" alt="Insignia Colombia" onerror="this.style.display='none'">
+                    
+                    <div class="eco-stats-row">
+                        <div class="eco-stat-box">
+                            <div class="eco-stat-num">+4,200</div>
+                            <div class="eco-stat-lbl">Artículos Publicados</div>
+                        </div>
+                        <div class="eco-stat-box">
+                            <div class="eco-stat-num">12</div>
+                            <div class="eco-stat-lbl">Solicitudes Pendientes</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="eco-visual-side">
+                    <!-- Mapa conceptual de Colombia -->
+                    <svg class="eco-svg-map" viewBox="0 0 100 100">
+                        <circle cx="50" cy="50" r="40" fill="var(--primary-glow)" opacity="0.1"/>
+                        <path d="M50 20 L65 38 L60 62 L42 75 L30 52 Z" stroke="var(--primary)" stroke-width="2" stroke-dasharray="4" fill="rgba(0, 242, 254, 0.05)"/>
+                        <circle cx="50" cy="45" r="6" fill="var(--primary)" />
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Ecuador -->
+            <div class="eco-tab-content" id="eco-ecuador">
+                <div class="eco-details">
+                    <h3 class="eco-country-title">
+                        Ecuador Comparte
+                        <span class="eco-flag-large">🇪🇨</span>
+                    </h3>
+                    <p class="eco-country-desc">
+                        Focalizado en la gestión de cooperativismo agrícola, testimonios comunitarios de la zona andina y noticias regionales de desarrollo sostenible.
+                    </p>
+                    <img class="eco-badge-img" src="assets/logos/logo-ecuador-comparte-bandera.png" alt="Insignia Ecuador" onerror="this.style.display='none'">
+
+                    <div class="eco-stats-row">
+                        <div class="eco-stat-box">
+                            <div class="eco-stat-num">+1,850</div>
+                            <div class="eco-stat-lbl">Artículos Publicados</div>
+                        </div>
+                        <div class="eco-stat-box">
+                            <div class="eco-stat-num">4</div>
+                            <div class="eco-stat-lbl">Solicitudes Pendientes</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="eco-visual-side">
+                    <svg class="eco-svg-map" viewBox="0 0 100 100">
+                        <circle cx="50" cy="50" r="40" fill="var(--primary-glow)" opacity="0.1"/>
+                        <path d="M45 32 L60 38 L55 58 L42 63 L38 48 Z" stroke="var(--primary)" stroke-width="2" stroke-dasharray="4" fill="rgba(0, 242, 254, 0.05)"/>
+                        <circle cx="48" cy="48" r="6" fill="var(--primary)" />
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Argentina -->
+            <div class="eco-tab-content" id="eco-argentina">
+                <div class="eco-details">
+                    <h3 class="eco-country-title">
+                        Argentina Comparte
+                        <span class="eco-flag-large">🇦🇷</span>
+                    </h3>
+                    <p class="eco-country-desc">
+                        Portal destinado a promover talleres culturales y proyectos de educación digital en el territorio. Incorpora filtros robustos contra spam en testimonios.
+                    </p>
+                    <img class="eco-badge-img" src="assets/logos/logo-argentina-comparte-bandera.png" alt="Insignia Argentina" onerror="this.style.display='none'">
+
+                    <div class="eco-stats-row">
+                        <div class="eco-stat-box">
+                            <div class="eco-stat-num">+2,900</div>
+                            <div class="eco-stat-lbl">Artículos Publicados</div>
+                        </div>
+                        <div class="eco-stat-box">
+                            <div class="eco-stat-num">8</div>
+                            <div class="eco-stat-lbl">Solicitudes Pendientes</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="eco-visual-side">
+                    <svg class="eco-svg-map" viewBox="0 0 100 100">
+                        <circle cx="50" cy="50" r="40" fill="var(--primary-glow)" opacity="0.1"/>
+                        <path d="M40 28 L55 33 L62 68 L48 78 L40 58 Z" stroke="var(--primary)" stroke-width="2" stroke-dasharray="4" fill="rgba(0, 242, 254, 0.05)"/>
+                        <circle cx="50" cy="52" r="6" fill="var(--primary)" />
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Chile -->
+            <div class="eco-tab-content" id="eco-chile">
+                <div class="eco-details">
+                    <h3 class="eco-country-title">
+                        Chile Comparte
+                        <span class="eco-flag-large">🇨🇱</span>
+                    </h3>
+                    <p class="eco-country-desc">
+                        Portal optimizado con altos estándares de automatización y trazabilidad de registros. En esta región destaca la asistencia interactiva de chatbot para acelerar respuestas.
+                    </p>
+                    <img class="eco-badge-img" src="assets/logos/logo-chile-comparte-bandera.png" alt="Insignia Chile" onerror="this.style.display='none'">
+
+                    <div class="eco-stats-row">
+                        <div class="eco-stat-box">
+                            <div class="eco-stat-num">+2,100</div>
+                            <div class="eco-stat-lbl">Artículos Publicados</div>
+                        </div>
+                        <div class="eco-stat-box">
+                            <div class="eco-stat-num">5</div>
+                            <div class="eco-stat-lbl">Solicitudes Pendientes</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="eco-visual-side">
+                    <svg class="eco-svg-map" viewBox="0 0 100 100">
+                        <circle cx="50" cy="50" r="40" fill="var(--primary-glow)" opacity="0.1"/>
+                        <path d="M48 18 L53 28 L51 72 L45 77 L46 48 Z" stroke="var(--primary)" stroke-width="2" stroke-dasharray="4" fill="rgba(0, 242, 254, 0.05)"/>
+                        <circle cx="49" cy="48" r="6" fill="var(--primary)" />
+                    </svg>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ==========================================
+         SECCIÓN ROLES DE ACCESO SEGURO (RBAC)
+         ========================================== -->
+    <section class="landing-section" id="roles">
+        <div class="section-header-center">
+            <span class="section-tag">Seguridad y Roles</span>
+            <h2 class="section-main-title">Seguridad estricta basada en el rol del usuario</h2>
+            <p class="section-main-desc">Las herramientas del panel se configuran automáticamente según los permisos de cada cuenta corporativa.</p>
+        </div>
+
+        <div class="rbac-grid">
+            <!-- Superadmin -->
+            <div class="rbac-card">
+                <span class="rbac-role-icon">👑</span>
+                <h3 class="rbac-role-name">Superadmin</h3>
+                <span class="rbac-role-badge">Control Total</span>
+                <ul class="rbac-permissions-list">
+                    <li class="rbac-permissions-item"><span class="rbac-check">✓</span> Gestión de Usuarios</li>
+                    <li class="rbac-permissions-item"><span class="rbac-check">✓</span> Control de Ecosistema</li>
+                    <li class="rbac-permissions-item"><span class="rbac-check">✓</span> Publicar / Editar Noticias</li>
+                    <li class="rbac-permissions-item"><span class="rbac-check">✓</span> Resolver Solicitudes</li>
+                    <li class="rbac-permissions-item"><span class="rbac-check">✓</span> Registro de Auditoría</li>
+                </ul>
+            </div>
+
+            <!-- Admin País -->
+            <div class="rbac-card">
+                <span class="rbac-role-icon">🌎</span>
+                <h3 class="rbac-role-name">Admin País</h3>
+                <span class="rbac-role-badge">Control Regional</span>
+                <ul class="rbac-permissions-list">
+                    <li class="rbac-permissions-item"><span class="rbac-cross">✗</span> Gestión de Usuarios</li>
+                    <li class="rbac-permissions-item"><span class="rbac-check">✓</span> CMS de su País</li>
+                    <li class="rbac-permissions-item"><span class="rbac-check">✓</span> Publicar / Editar Noticias</li>
+                    <li class="rbac-permissions-item"><span class="rbac-check">✓</span> Gestionar Solicitudes</li>
+                    <li class="rbac-permissions-item"><span class="rbac-check">✓</span> Auditoría de su País</li>
+                </ul>
+            </div>
+
+            <!-- Editor -->
+            <div class="rbac-card">
+                <span class="rbac-role-icon">✍️</span>
+                <h3 class="rbac-role-name">Editor</h3>
+                <span class="rbac-role-badge">Escritura Limitada</span>
+                <ul class="rbac-permissions-list">
+                    <li class="rbac-permissions-item"><span class="rbac-cross">✗</span> Gestión de Usuarios</li>
+                    <li class="rbac-permissions-item"><span class="rbac-cross">✗</span> Gestionar Solicitudes</li>
+                    <li class="rbac-permissions-item"><span class="rbac-check">✓</span> Escribir y Subir Fotos</li>
+                    <li class="rbac-permissions-item"><span class="rbac-cross">✗</span> Eliminar Registros</li>
+                    <li class="rbac-permissions-item"><span class="rbac-cross">✗</span> Ver Auditoría</li>
+                </ul>
+            </div>
+
+            <!-- Invitado -->
+            <div class="rbac-card">
+                <span class="rbac-role-icon">👁️</span>
+                <h3 class="rbac-role-name">Invitado</h3>
+                <span class="rbac-role-badge">Solo Lectura</span>
+                <ul class="rbac-permissions-list">
+                    <li class="rbac-permissions-item"><span class="rbac-cross">✗</span> Crear Contenido</li>
+                    <li class="rbac-permissions-item"><span class="rbac-cross">✗</span> Modificar Solicitudes</li>
+                    <li class="rbac-permissions-item"><span class="rbac-check">✓</span> Ver Dashboard Básico</li>
+                    <li class="rbac-permissions-item"><span class="rbac-cross">✗</span> Subir Archivos</li>
+                    <li class="rbac-permissions-item"><span class="rbac-cross">✗</span> Ver Auditoría</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         SECCIÓN GALERÍA DE CAPTURAS DE PANTALLA
+         ========================================== -->
+    <div class="gallery-section-wrapper" id="galeria">
+        <section class="landing-section" style="padding-top: 5rem; padding-bottom: 5rem;">
+            <div class="section-header-center" style="margin-bottom: 3rem;">
+                <span class="section-tag">Galería Real</span>
+                <h2 class="section-main-title">Explora la Interfaz de la Aplicación</h2>
+                <p class="section-main-desc">Capturas de pantalla reales del panel administrativo funcionando en dispositivos móviles. Haz clic en cualquiera para ampliarla.</p>
+            </div>
+
+            <div class="gallery-carousel">
+                <!-- Botón Atrás -->
+                <button class="gallery-btn prev" id="gal-prev" aria-label="Anterior">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                </button>
+
+                <!-- Scroll de capturas reales -->
+                <div class="gallery-scroll-container" id="gal-scroll">
+                    
+                    <!-- 1. Login -->
+                    <div class="gallery-card-item">
+                        <div class="device-iphone">
+                            <div class="device-island"></div>
+                            <div class="device-screen">
+                                <div class="device-glare"></div>
+                                <img src="assets/capturas/login.jpg" class="zoomable-screenshot" data-title="Acceso Seguro (RBAC)" alt="Pantalla de Login">
+                            </div>
+                        </div>
+                        <h4 class="gallery-cap-title">Inicio de Sesión</h4>
+                        <p class="gallery-cap-desc">Autenticación cifrada con control de acceso restrictivo por rol del usuario.</p>
+                    </div>
+
+                    <!-- 2. Dashboard -->
+                    <div class="gallery-card-item">
+                        <div class="device-iphone">
+                            <div class="device-island"></div>
+                            <div class="device-screen">
+                                <div class="device-glare"></div>
+                                <img src="assets/capturas/dashboard.jpg" class="zoomable-screenshot" data-title="Dashboard de Gestión" alt="Pantalla Dashboard">
+                            </div>
+                        </div>
+                        <h4 class="gallery-cap-title">Dashboard Global</h4>
+                        <p class="gallery-cap-desc">Métricas y accesos rápidos a portales de Colombia, Ecuador, Argentina y Chile.</p>
+                    </div>
+
+                    <!-- 3. Admin País -->
+                    <div class="gallery-card-item">
+                        <div class="device-iphone">
+                            <div class="device-island"></div>
+                            <div class="device-screen">
+                                <div class="device-glare"></div>
+                                <img src="assets/capturas/adminpais.jpg" class="zoomable-screenshot" data-title="Panel del Administrador de País" alt="Pantalla Admin País">
+                            </div>
+                        </div>
+                        <h4 class="gallery-cap-title">Gestión Local</h4>
+                        <p class="gallery-cap-desc">Módulo para segmentar y auditar la información específica de cada región asignada.</p>
+                    </div>
+
+                    <!-- 4. Solicitudes -->
+                    <div class="gallery-card-item">
+                        <div class="device-iphone">
+                            <div class="device-island"></div>
+                            <div class="device-screen">
+                                <div class="device-glare"></div>
+                                <img src="assets/capturas/solicitudes.jpg" class="zoomable-screenshot" data-title="Bandeja de Solicitudes y Testimonios" alt="Pantalla Solicitudes">
+                            </div>
+                        </div>
+                        <h4 class="gallery-cap-title">Control de Solicitudes</h4>
+                        <p class="gallery-cap-desc">Aprobación veloz de testimonios y solicitudes comunitarias enviadas al sistema.</p>
+                    </div>
+
+                    <!-- 5. Auditoría (Bitacora) -->
+                    <div class="gallery-card-item">
+                        <div class="device-iphone">
+                            <div class="device-island"></div>
+                            <div class="device-screen">
+                                <div class="device-glare"></div>
+                                <img src="assets/capturas/bitacora.jpg" class="zoomable-screenshot" data-title="Registro de Actividades (Auditoría)" alt="Pantalla Bitácora">
+                            </div>
+                        </div>
+                        <h4 class="gallery-cap-title">Bitácora de Auditoría</h4>
+                        <p class="gallery-cap-desc">Trazabilidad total e inmutable para registrar quién publica, edita o elimina en la plataforma.</p>
+                    </div>
+
+                    <!-- 6. Chatbot -->
+                    <div class="gallery-card-item">
+                        <div class="device-iphone">
+                            <div class="device-island"></div>
+                            <div class="device-screen">
+                                <div class="device-glare"></div>
+                                <img src="assets/capturas/chatbot.jpg" class="zoomable-screenshot" data-title="Chatbot de Asistencia Integrado" alt="Pantalla Chatbot">
+                            </div>
+                        </div>
+                        <h4 class="gallery-cap-title">Asistente Virtual IA</h4>
+                        <p class="gallery-cap-desc">Chat inteligente que asiste a los editores en redacción de noticias y métricas rápidas.</p>
+                    </div>
+
+                </div>
+
+                <!-- Botón Adelante -->
+                <button class="gallery-btn next" id="gal-next" aria-label="Siguiente">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </button>
+            </div>
+        </section>
+    </div>
+
+    <!-- ==========================================
+         SECCIÓN ASISTENTE VIRTUAL / CHATBOT
+         ========================================== -->
+    <section class="landing-section" id="asistente">
+        <div class="chatbot-panel">
+            <div class="chatbot-intro">
+                <span class="section-tag">Asistencia IA</span>
+                <h2 class="section-main-title" style="font-size: 2.5rem;">Soporte Inteligente Integrado en la App</h2>
+                <p class="section-main-desc">
+                    El chatbot provee asistencia continua para los administradores en lenguaje natural. Agiliza la búsqueda de registros, genera borradores de noticias y responde consultas de soporte técnico al instante.
+                </p>
+                
+                <div class="chatbot-avatar-showcase">
+                    <img class="chatbot-gif" src="assets/chatbot/male_home.gif" alt="Chatbot" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'72\' height=\'72\' viewBox=\'0 0 72 72\'><circle cx=\'36\' cy=\'36\' r=\'34\' fill=\'%2300f2fe\'/><text x=\'50%\' y=\'55%\' font-size=\'28\' fill=\'%23fff\' text-anchor=\'middle\'>🤖</text></svg>'">
+                    <div>
+                        <h4 class="chatbot-name-title">Asistente Latam Comparte</h4>
+                        <span class="chatbot-status-live">En línea y listo</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Simulador de chat en vivo widget -->
+            <div class="chatbot-chat-widget">
+                <div class="widget-chat-header">
+                    <div style="width: 10px; height: 10px; border-radius: 50%; background: var(--emerald);"></div>
+                    <span class="widget-chat-title">Simulador de Asistente IA</span>
+                </div>
+                
+                <div class="widget-chat-body" id="live-chat-panel">
+                    <div class="chat-bubble incoming">¡Hola! Soy tu asistente de Latinoamérica Comparte. ¿En qué puedo ayudarte hoy en el panel admin?</div>
+                </div>
+
+                <div class="widget-chat-footer">
+                    <div class="widget-chat-input-placeholder">Escribe una pregunta administrativa...</div>
+                    <div class="widget-chat-send">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         SECCIÓN DATOS TÉCNICOS Y SEGURIDAD
+         ========================================== -->
+    <section class="landing-section" style="padding-top: 3rem;">
+        <div class="specs-safety-grid">
+            <!-- Ficha Técnica -->
+            <div class="specs-card">
+                <h3 class="outfit-font" style="font-size: 1.5rem; margin-bottom: 1.5rem;">Ficha Técnica</h3>
+                
+                <div class="specs-list">
+                    <div class="specs-item">
+                        <span class="specs-lbl">Framework Base</span>
+                        <span class="specs-val">Flutter & Dart (Nativo)</span>
+                    </div>
+                    <div class="specs-item">
+                        <span class="specs-lbl">Sistema UI</span>
+                        <span class="specs-val">Material Design 3</span>
+                    </div>
+                    <div class="specs-item">
+                        <span class="specs-lbl">Compatibilidad</span>
+                        <span class="specs-val">Android 7.0+ / iOS 14.0+</span>
+                    </div>
+                    <div class="specs-item">
+                        <span class="specs-lbl">Control Multimedia</span>
+                        <span class="specs-val">image_picker optimizado</span>
+                    </div>
+                    <div class="specs-item">
+                        <span class="specs-lbl">Seguridad</span>
+                        <span class="specs-val">Tokens Encriptados HTTPS</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Seguridad -->
+            <div class="safety-showcase">
+                <div class="safety-block">
+                    <span class="safety-icon">🛡️</span>
+                    <div class="safety-info">
+                        <h4>Encriptación Extremo a Extremo</h4>
+                        <p>Los tokens de sesión de los administradores y todos los logs de auditoría se transmiten encriptados bajo protocolos seguros (TLS 1.3).</p>
+                    </div>
+                </div>
+
+                <div class="safety-block">
+                    <span class="safety-icon">🔑</span>
+                    <div class="safety-info">
+                        <h4>RBAC Estricto</h4>
+                        <p>Los botones y campos se inhabilitan en la interfaz del móvil y se validan a nivel servidor para evitar saltos de seguridad ilegítimos.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         CTA BOTTOM (DESCARGA)
+         ========================================== -->
+    <section class="landing-section section-cta-bottom" id="descarga">
+        <div class="cta-box">
+            <h2 class="cta-title">Toma el control de tus portales <span>hoy mismo</span></h2>
+            <p class="cta-desc">Disponible para administradores, editores y superadministradores registrados del ecosistema de Latinoamérica Comparte.</p>
+            
+            <div class="hero-actions-container">
+                <div class="hero-buttons">
+                    <button class="btn-apk-download" id="apk-download-btn-bottom">
+                        <span class="btn-apk-loading-bar" id="apk-progress-bar-bottom"></span>
+                        <span class="btn-apk-text" id="apk-btn-text-bottom">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                            Descargar APK Directo
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         PIE DE PÁGINA (FOOTER)
+         ========================================== -->
+    <footer class="landing-footer">
+        <div class="footer-grid">
+            <div class="footer-info-col">
+                <a href="#" class="footer-logo-title">Latinoamérica Comparte</a>
+                <p class="footer-desc-text">La aplicación administrativa móvil unificada para la gestión del contenido comunitario y registros de auditoría local en Sudamérica.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Ecosistema</h4>
+                <ul class="footer-links-list">
+                    <li><a href="#ecosistema">Colombia Comparte</a></li>
+                    <li><a href="#ecosistema">Ecuador Comparte</a></li>
+                    <li><a href="#ecosistema">Argentina Comparte</a></li>
+                    <li><a href="#ecosistema">Chile Comparte</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Enlaces</h4>
+                <ul class="footer-links-list">
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#caracteristicas">Funciones</a></li>
+                    <li><a href="#galeria">Capturas Reales</a></li>
+                    <li><a href="#descarga">Descargas</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Desarrollo</h4>
+                <ul class="footer-links-list">
+                    <li><a href="#">Juan Esteban Dulcey</a></li>
+                    <li><a href="#">Soporte Técnico</a></li>
+                    <li><a href="#">Políticas de Privacidad</a></li>
+                    <li><a href="#">Políticas de Seguridad</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom-bar">
+            <p>© 2026 Latinoamérica Comparte. Todos los derechos reservados. Construida con Flutter & Dart.</p>
+            <p>Diseño y UX por Juan Esteban Dulcey</p>
+        </div>
+    </footer>
+
+    <!-- MODAL DE ZOOM (LIGHTBOX) -->
+    <div class="lightbox-modal" id="lightbox">
+        <div class="lightbox-content">
+            <button class="lightbox-close" id="lightbox-close">&times;</button>
+            <img src="" alt="Captura ampliada" class="lightbox-img" id="lightbox-img">
+            <h4 class="lightbox-title" id="lightbox-title">Título de Captura</h4>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

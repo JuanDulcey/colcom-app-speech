@@ -1,0 +1,26 @@
+# Checklist: Landing Page de Producto Latinoamérica Comparte
+
+- [x] Rediseñar `styles.css` con diseño de landing page de producto SaaS (estilo Apple 2026, tipografía Outfit/Inter display, gradientes vivos, marcos de teléfono realistas y transiciones fluidas).
+- [x] Rediseñar `index.html` para estructurar la landing page de producto:
+  - Header minimalista con logo de Latinoamérica Comparte y botones de acción.
+  - Hero Section con titulares de alto impacto, descripción de valor, botones de descarga directa (APK, Google Play, App Store) y el marco de teléfono flotante mostrando `assets/capturas/splash.jpg`.
+  - Grid de Características principales con iconos y animaciones hover.
+  - Panel interactivo del Ecosistema de Países (Colombia, Ecuador, Argentina, Chile) con pestañas e información local.
+  - Sección de Roles de Usuario (RBAC) con tarjetas interactivas de permisos.
+  - Galería de Capturas de Pantalla Reales en marcos de teléfono móviles, mostrando:
+    - Inicio de Sesión Seguro (`assets/capturas/login.jpg`)
+    - Ecosistema Global (`assets/capturas/dashboard.jpg`)
+    - Control por País (`assets/capturas/adminpais.jpg`)
+    - Gestión de Solicitudes (`assets/capturas/solicitudes.jpg`)
+    - Bitácora de Auditoría (`assets/capturas/bitacora.jpg`)
+    - Chatbot Inteligente (`assets/capturas/chatbot.jpg`)
+  - Sección dedicada al Asistente Virtual / Chatbot con `assets/chatbot/male_home.gif` y simulador interactivo de chat.
+  - Ficha técnica y seguridad de datos corporativa.
+  - Footer corporativo con atribución y enlaces.
+- [x] Rediseñar `script.js` para adaptarlo a la nueva interactividad de producto:
+  - Manejo del slider de capturas de pantalla reales (botones y gestos de deslizamiento).
+  - Efectos de revelado scroll (Intersection Observer) para que la página se sienta fluida e interactiva al bajar.
+  - Simulación de descarga directa del APK con barra de progreso premium en el botón principal.
+  - Pestañas del ecosistema regional y chat simulado.
+- [x] Validar compatibilidad móvil responsive y verificar que no queden referencias al clon de Google Play Store.
+- [x] Crear el reporte final `walkthrough.md` en el directorio raíz.
