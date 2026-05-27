@@ -9,6 +9,9 @@
 </head>
 <body>
 
+    <!-- LIENZO DE PARTÍCULAS INTERACTIVAS (FONDO) -->
+    <canvas id="bg-particles"></canvas>
+
     <!-- ==========================================
          NAVEGACIÓN SUPERIOR (NAVBAR)
          ========================================== -->
@@ -517,6 +520,7 @@
                 </p>
                 
                 <div class="chatbot-avatar-showcase">
+                    <!-- Implementación de male_home.gif -->
                     <img class="chatbot-gif" src="assets/chatbot/male_home.gif" alt="Chatbot" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'72\' height=\'72\' viewBox=\'0 0 72 72\'><circle cx=\'36\' cy=\'36\' r=\'34\' fill=\'%2300f2fe\'/><text x=\'50%\' y=\'55%\' font-size=\'28\' fill=\'%23fff\' text-anchor=\'middle\'>🤖</text></svg>'">
                     <div>
                         <h4 class="chatbot-name-title">Asistente Latam Comparte</h4>
@@ -525,22 +529,25 @@
                 </div>
             </div>
 
-            <!-- Simulador de chat en vivo widget -->
+            <!-- Simulador de chat en vivo widget real funcional -->
             <div class="chatbot-chat-widget">
                 <div class="widget-chat-header">
                     <div style="width: 10px; height: 10px; border-radius: 50%; background: var(--emerald);"></div>
-                    <span class="widget-chat-title">Simulador de Asistente IA</span>
+                    <span class="widget-chat-title">Simulador de Asistente IA (Interactuable)</span>
                 </div>
                 
                 <div class="widget-chat-body" id="live-chat-panel">
-                    <div class="chat-bubble incoming">¡Hola! Soy tu asistente de Latinoamérica Comparte. ¿En qué puedo ayudarte hoy en el panel admin?</div>
+                    <div class="chat-bubble-container bot">
+                        <img src="assets/chatbot/male.png" class="chat-avatar-mini" alt="AI">
+                        <div class="chat-bubble incoming">¡Hola! Soy tu asistente de Latinoamérica Comparte. ¿En qué puedo ayudarte hoy en el panel admin? Prueba preguntándome sobre "roles", "colombia", "seguridad" o "descarga".</div>
+                    </div>
                 </div>
 
                 <div class="widget-chat-footer">
-                    <div class="widget-chat-input-placeholder">Escribe una pregunta administrativa...</div>
-                    <div class="widget-chat-send">
+                    <input type="text" id="live-chat-input" class="widget-chat-input" placeholder="Pregúntale algo al chatbot...">
+                    <button class="widget-chat-send-btn" id="live-chat-send-btn" aria-label="Enviar mensaje">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
-                    </div>
+                    </button>
                 </div>
             </div>
         </div>
@@ -665,6 +672,46 @@
             <p>Diseño y UX por Juan Esteban Dulcey</p>
         </div>
     </footer>
+
+    <!-- WIDGET DE SOPORTE FLOTANTE INTERACTIVO -->
+    <div class="floating-chat-container" id="float-chat-container">
+        <button class="floating-chat-trigger" id="float-chat-trigger" aria-label="Abrir Asistencia Virtual" title="Asistencia Virtual">
+            <!-- Implementación de avatar.png en el launcher flotante -->
+            <img src="assets/chatbot/avatar.png" alt="Avatar Bot" class="float-trigger-img" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'50\' height=\'50\' viewBox=\'0 0 50 50\'><circle cx=\'25\' cy=\'25\' r=\'23\' fill=\'%2300f2fe\'/><text x=\'50%\' y=\'55%\' font-size=\'18\' fill=\'%23fff\' text-anchor=\'middle\'>🤖</text></svg>'">
+            <span class="chat-badge-pulse"></span>
+        </button>
+        
+        <div class="floating-chat-window" id="float-chat-window">
+            <div class="float-chat-header">
+                <div class="float-chat-header-profile">
+                    <!-- Implementación de male.png en la ventana flotante -->
+                    <img src="assets/chatbot/male.png" alt="Asistente Male" class="chat-avatar-mini" onerror="this.style.display='none'">
+                    <div>
+                        <h4 style="font-size: 0.85rem; font-weight: 700; color: #fff;">Asistente Latam</h4>
+                        <span style="font-size: 0.65rem; color: var(--emerald); display: flex; align-items: center; gap: 0.25rem;">
+                            <span style="width: 6px; height: 6px; background: var(--emerald); border-radius: 50%; display: inline-block;"></span>
+                            En línea
+                        </span>
+                    </div>
+                </div>
+                <button class="float-chat-close" id="float-chat-close" aria-label="Cerrar chat">&times;</button>
+            </div>
+            
+            <div class="float-chat-body" id="float-chat-body">
+                <div class="chat-bubble-container bot">
+                    <img src="assets/chatbot/male.png" class="chat-avatar-mini" alt="AI">
+                    <div class="chat-bubble incoming">¡Hola! ¿Deseas asistencia rápida sobre la app? Pregúntame dónde descargarla o sobre el RBAC.</div>
+                </div>
+            </div>
+            
+            <div class="float-chat-footer">
+                <input type="text" id="float-chat-input" class="float-chat-input" placeholder="Escribe aquí tu duda...">
+                <button id="float-chat-send" class="float-send-btn" aria-label="Enviar">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="22 2 11 13"></polyline><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                </button>
+            </div>
+        </div>
+    </div>
 
     <!-- MODAL DE ZOOM (LIGHTBOX) -->
     <div class="lightbox-modal" id="lightbox">

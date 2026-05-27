@@ -1,0 +1,25 @@
+# Markdown documentation
+*.md
+
+# JetBrains / IDE local files
+.idea/
+.antigravitycli/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Temporary / log files
+*.log
+*.tmp
+*.swp
+*.swo
+
+# Common build outputs
+node_modules/
+dist/
+build/
+coverage/
+implementation_plan.md
+contexto.md
+
