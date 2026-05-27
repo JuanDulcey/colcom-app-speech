@@ -546,7 +546,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (e.key === 'Enter') {
                     handleSendMessage(floatChatInput, floatChatBody);
                 }
-            }    const rbacCards = document.querySelectorAll('.rbac-card');
+            });
+        }
+    }
+
+    const rbacCards = document.querySelectorAll('.rbac-card');
     rbacCards.forEach(card => {
         card.addEventListener('click', () => {
             // Limpiar activos
