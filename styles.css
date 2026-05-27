@@ -1942,10 +1942,10 @@ footer.landing-footer {
         border-radius: 8px;
     }
     
-    /* Desactivar inclinación 3D en móvil para evitar scroll horizontal */
+    /* Desactivar inclinación 3D en móvil para evitar scroll horizontal pero manteniendo el flote */
     .device-iphone.hero-tilt {
-        transform: none !important;
-        animation: heroFloatMobile 4s ease-in-out infinite alternate !important;
+        transform: none;
+        animation: heroFloatMobile 4s ease-in-out infinite alternate;
     }
     
     /* Escalar iPhones en galería para que el scroll sea limpio y no ocupe todo el alto */
