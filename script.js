@@ -372,8 +372,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         }
 
                         const dummyLink = document.createElement('a');
-                        dummyLink.href = 'assets/capturas/splash.jpg';
-                        dummyLink.download = 'latinoamerica_comparte_admin.apk';
+                        dummyLink.href = 'https://drive.google.com/file/d/16ZzaVx_J4z4xzlxIAvwBjwxoH0KGB-Ve/view?usp=sharing';
+                        dummyLink.target = '_blank';
                         document.body.appendChild(dummyLink);
                         dummyLink.click();
                         document.body.removeChild(dummyLink);
@@ -668,38 +668,92 @@ document.addEventListener('DOMContentLoaded', () => {
         auditLogTerminal.scrollTop = auditLogTerminal.scrollHeight;
     }
 
-    // --- 13. SELECCIÓN DE PANTALLA HERO INTERACTIVO ---
+    // --- 13. SELECCIÓN DE PANTALLA HERO INTERACTIVO (CON AUTO-ROTACIÓN) ---
     const switcherBtns = document.querySelectorAll('.switcher-btn');
     const heroPhoneImg = document.getElementById('hero-phone-img');
+    let autoCycleInterval;
+    let userTimeout;
+    const cycleDelay = 4000; // 4 segundos entre cambios de pantalla
+
+    function changeScreen(btn, isAuto = false) {
+        if (!btn) return;
+        const screen = btn.getAttribute('data-screen');
+        
+        // Cambiar clase activa
+        switcherBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        if (heroPhoneImg) {
+            // Efecto de parpadeo suave al cambiar
+            heroPhoneImg.style.transition = 'opacity 0.15s ease';
+            heroPhoneImg.style.opacity = '0';
+            
+            setTimeout(() => {
+                heroPhoneImg.src = `assets/capturas/${screen}.jpg`;
+                
+                // Manejar fallback de imagen por si no existe
+                heroPhoneImg.onerror = function() {
+                    this.src = `data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='280' height='570'><rect width='100%' height='100%' fill='%23070913'/><text x='50%' y='50%' font-family='Outfit' font-weight='bold' font-size='22' fill='%2300f2fe' text-anchor='middle'>${screen.toUpperCase()}</text></svg>`;
+                };
+                
+                heroPhoneImg.style.opacity = '1';
+            }, 150);
+        }
+
+        // Registrar acción en la bitácora
+        if (typeof addAuditLogEntry === 'function') {
+            const logType = isAuto ? 'SYS' : 'AUDIT';
+            const logMsg = isAuto 
+                ? `Rotación automática del simulador cambió vista a: ${screen.toUpperCase()}` 
+                : `Vista del simulador de iPhone Hero cambiada a: ${screen.toUpperCase()}`;
+            addAuditLogEntry(logMsg, logType);
+        }
+    }
+
+    // Iniciar rotación automática
+    function startAutoCycle() {
+        autoCycleInterval = setInterval(() => {
+            let activeIndex = 0;
+            // Encontrar el índice activo actual
+            switcherBtns.forEach((btn, index) => {
+                if (btn.classList.contains('active')) {
+                    activeIndex = index;
+                }
+            });
+
+            // Siguiente botón
+            const nextIndex = (activeIndex + 1) % switcherBtns.length;
+            const nextBtn = switcherBtns[nextIndex];
+            
+            changeScreen(nextBtn, true);
+        }, cycleDelay);
+    }
+
+    // Detener la rotación automática
+    function stopAutoCycle() {
+        if (autoCycleInterval) {
+            clearInterval(autoCycleInterval);
+        }
+    }
 
     switcherBtns.forEach(btn => {
         btn.addEventListener('click', () => {
-            const screen = btn.getAttribute('data-screen');
+            // Detener el auto-ciclo por interacción manual
+            stopAutoCycle();
+            clearTimeout(userTimeout);
             
-            // Cambiar clase activa
-            switcherBtns.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-
-            if (heroPhoneImg) {
-                // Efecto de parpadeo suave al cambiar
-                heroPhoneImg.style.transition = 'opacity 0.15s ease';
-                heroPhoneImg.style.opacity = '0';
-                
-                setTimeout(() => {
-                    heroPhoneImg.src = `assets/capturas/${screen}.jpg`;
-                    
-                    // Manejar fallback de imagen por si no existe
-                    heroPhoneImg.onerror = function() {
-                        this.src = `data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='280' height='570'><rect width='100%' height='100%' fill='%23070913'/><text x='50%' y='50%' font-family='Outfit' font-weight='bold' font-size='22' fill='%2300f2fe' text-anchor='middle'>${screen.toUpperCase()}</text></svg>`;
-                    };
-                    
-                    heroPhoneImg.style.opacity = '1';
-                }, 150);
-            }
-
-            // Registrar acción en la bitácora
-            addAuditLogEntry(`Vista del simulador de iPhone Hero cambiada a: ${screen.toUpperCase()}`, 'AUDIT');
+            // Cambiar pantalla
+            changeScreen(btn, false);
+            
+            // Reiniciar la rotación automática después de 10 segundos de inactividad
+            userTimeout = setTimeout(() => {
+                stopAutoCycle();
+                startAutoCycle();
+            }, 10000);
         });
     });
+
+    // Iniciar por primera vez
+    startAutoCycle();
 
 });
