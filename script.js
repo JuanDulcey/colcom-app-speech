@@ -190,6 +190,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const isLight = body.classList.contains('light-mode');
         localStorage.setItem('theme', isLight ? 'light' : 'dark');
         updateSvgIcon(isLight);
+        
+        // Registrar acción en la bitácora
+        if (typeof addAuditLogEntry === 'function') {
+            addAuditLogEntry(`Tema visual cambiado a modo ${isLight ? 'CLARO' : 'OSCURO'}`, 'USER');
+        }
     });
 
     function updateSvgIcon(isLight) {
@@ -224,6 +229,11 @@ document.addEventListener('DOMContentLoaded', () => {
             const targetContent = document.getElementById(`eco-${countryId}`);
             if (targetContent) {
                 targetContent.classList.add('active');
+            }
+
+            // Registrar acción en la bitácora
+            if (typeof addAuditLogEntry === 'function') {
+                addAuditLogEntry(`Portal regional activo cambiado a: ${countryId.toUpperCase()}`, 'USER');
             }
         });
     });
@@ -332,9 +342,14 @@ document.addEventListener('DOMContentLoaded', () => {
             state = 'loading';
             group.btn.style.pointerEvents = 'none';
             
+            // Registrar acción en la bitácora
+            if (typeof addAuditLogEntry === 'function') {
+                addAuditLogEntry(`Solicitud de descarga de APK enviada al servidor`, 'USER');
+            }
+
             let progress = 0;
             const progressInterval = setInterval(() => {
-                progress += Math.floor(Math.random() * 10) + 4;
+                progress += Math.floor(Math.random() * 12) + 6;
                 if (progress >= 100) {
                     progress = 100;
                     clearInterval(progressInterval);
@@ -351,6 +366,11 @@ document.addEventListener('DOMContentLoaded', () => {
                             ¡Descarga Completa!
                         `;
                         
+                        // Registrar acción en la bitácora
+                        if (typeof addAuditLogEntry === 'function') {
+                            addAuditLogEntry(`Compilación de APK generada y descargada: latinoamerica_comparte_admin.apk`, 'AUDIT');
+                        }
+
                         const dummyLink = document.createElement('a');
                         dummyLink.href = 'assets/capturas/splash.jpg';
                         dummyLink.download = 'latinoamerica_comparte_admin.apk';
@@ -362,7 +382,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     group.bar.style.width = `${progress}%`;
                     group.txt.innerHTML = `Descargando... ${progress}%`;
                 }
-            }, 100);
+            }, 120);
         });
     });
 
@@ -455,6 +475,11 @@ document.addEventListener('DOMContentLoaded', () => {
         appendChatBubble(chatPanelElement, 'user', messageText);
         inputElement.value = '';
 
+        // Registrar consulta en bitácora
+        if (typeof addAuditLogEntry === 'function') {
+            addAuditLogEntry(`Editor consultó al chatbot: "${messageText.substring(0, 30)}${messageText.length > 30 ? '...' : ''}"`, 'USER');
+        }
+
         // 2. Efecto de carga del bot
         const typingIndicator = showTypingIndicator(chatPanelElement);
 
@@ -465,6 +490,11 @@ document.addEventListener('DOMContentLoaded', () => {
             
             const replyText = getChatbotReply(messageText);
             appendChatBubble(chatPanelElement, 'bot', replyText);
+
+            // Registrar respuesta en bitácora
+            if (typeof addAuditLogEntry === 'function') {
+                addAuditLogEntry(`Chatbot IA resolvió consulta y generó logs locales`, 'AUDIT');
+            }
         }, 1200);
     }
 
@@ -516,13 +546,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (e.key === 'Enter') {
                     handleSendMessage(floatChatInput, floatChatBody);
                 }
-            });
-        }
-    }
-
-
-    // --- 10. SIMULADOR INTERACTIVO DE ROLES (RBAC) ---
-    const rbacCards = document.querySelectorAll('.rbac-card');
+            }    const rbacCards = document.querySelectorAll('.rbac-card');
     rbacCards.forEach(card => {
         card.addEventListener('click', () => {
             // Limpiar activos
@@ -531,6 +555,11 @@ document.addEventListener('DOMContentLoaded', () => {
             
             const role = card.querySelector('.rbac-role-name').textContent;
             
+            // Registrar acción en la bitácora
+            if (typeof addAuditLogEntry === 'function') {
+                addAuditLogEntry(`Cambio de rol administrativo simulado a: ${role.toUpperCase()}`, 'USER');
+            }
+
             // Retroalimentación al usuario
             const toast = document.createElement('div');
             toast.style.position = 'fixed';
@@ -556,12 +585,116 @@ document.addEventListener('DOMContentLoaded', () => {
                 toast.style.opacity = '1';
                 toast.style.transform = 'translateX(-50%) translateY(0)';
             }, 50);
-
+ 
             setTimeout(() => {
                 toast.style.opacity = '0';
                 toast.style.transform = 'translateX(-50%) translateY(20px)';
                 setTimeout(() => toast.remove(), 300);
             }, 2500);
+        });
+    });
+
+    // --- 11. MANEJO DE MENÚ DE NAVEGACIÓN MÓVIL (HAMBURGUESA DRAWER) ---
+    const navToggleBtn = document.getElementById('nav-toggle-btn');
+    const navMenu = document.querySelector('.nav-menu');
+    const navLinks = document.querySelectorAll('.nav-menu-item a');
+
+    if (navToggleBtn && navMenu) {
+        navToggleBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            navToggleBtn.classList.toggle('active');
+            navMenu.classList.toggle('active');
+            
+            if (typeof addAuditLogEntry === 'function') {
+                const isOpen = navMenu.classList.contains('active');
+                addAuditLogEntry(`Menú lateral móvil ${isOpen ? 'ABIERTO' : 'CERRADO'}`, 'USER');
+            }
+        });
+
+        // Cerrar al hacer click en un enlace
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navToggleBtn.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Cerrar al hacer click fuera
+        document.addEventListener('click', (e) => {
+            if (navMenu.classList.contains('active') && !navMenu.contains(e.target) && !navToggleBtn.contains(e.target)) {
+                navToggleBtn.classList.remove('active');
+                navMenu.classList.remove('active');
+                
+                if (typeof addAuditLogEntry === 'function') {
+                    addAuditLogEntry(`Menú lateral móvil CERRADO (clic fuera)`, 'USER');
+                }
+            }
+        });
+    }
+
+    // --- 12. UTILERÍA DE AUDITORÍA EN TIEMPO REAL (TERMINAL SIMULADO) ---
+    const auditLogTerminal = document.getElementById('audit-log-terminal');
+
+    function addAuditLogEntry(action, type = 'USER') {
+        if (!auditLogTerminal) return;
+        
+        const now = new Date();
+        const timeString = now.toTimeString().split(' ')[0];
+        const entry = document.createElement('div');
+        entry.className = 'audit-log-entry';
+        
+        let prefix = `[${type}]`;
+        if (type === 'SYS') {
+            entry.style.color = 'var(--text-muted)';
+        } else if (type === 'AUDIT') {
+            entry.style.color = 'var(--emerald)';
+        } else {
+            entry.style.color = 'var(--primary)';
+        }
+        
+        entry.textContent = `${prefix} ${timeString} - ${action}`;
+        auditLogTerminal.appendChild(entry);
+        
+        // Limitar número de entradas en el DOM para rendimiento (ej: máximo 20)
+        while (auditLogTerminal.children.length > 20) {
+            auditLogTerminal.removeChild(auditLogTerminal.firstChild);
+        }
+        
+        // Auto scroll
+        auditLogTerminal.scrollTop = auditLogTerminal.scrollHeight;
+    }
+
+    // --- 13. SELECCIÓN DE PANTALLA HERO INTERACTIVO ---
+    const switcherBtns = document.querySelectorAll('.switcher-btn');
+    const heroPhoneImg = document.getElementById('hero-phone-img');
+
+    switcherBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const screen = btn.getAttribute('data-screen');
+            
+            // Cambiar clase activa
+            switcherBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            if (heroPhoneImg) {
+                // Efecto de parpadeo suave al cambiar
+                heroPhoneImg.style.transition = 'opacity 0.15s ease';
+                heroPhoneImg.style.opacity = '0';
+                
+                setTimeout(() => {
+                    heroPhoneImg.src = `assets/capturas/${screen}.jpg`;
+                    
+                    // Manejar fallback de imagen por si no existe
+                    heroPhoneImg.onerror = function() {
+                        this.src = `data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='280' height='570'><rect width='100%' height='100%' fill='%23070913'/><text x='50%' y='50%' font-family='Outfit' font-weight='bold' font-size='22' fill='%2300f2fe' text-anchor='middle'>${screen.toUpperCase()}</text></svg>`;
+                    };
+                    
+                    heroPhoneImg.style.opacity = '1';
+                }, 150);
+            }
+
+            // Registrar acción en la bitácora
+            addAuditLogEntry(`Vista del simulador de iPhone Hero cambiada a: ${screen.toUpperCase()}`, 'AUDIT');
         });
     });
 

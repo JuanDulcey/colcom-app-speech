@@ -1,52 +1,57 @@
-# Plan de Implementación (Adiciones): Partículas de Fondo, Chatbot Real e Interactividad Avanzada
+# Plan de Implementación: Optimización Responsiva Móvil y Nuevas Características Interactivas
 
-Agregar un sistema de partículas interactivo en 2D (HTML5 Canvas) que flote en el fondo de la landing page, incorporar los assets de imagen del chatbot proporcionados (`avatar.png`, `male.png` y `male_home.gif`) en los chats y flotantes, e implementar mejoras de interactividad y UX Pro Max 2026.
-
----
-
-## User Review Required
-
-> [!IMPORTANT]
-> **Efecto de Partículas Interactivas:**
-> Implementaremos un lienzo `<canvas>` de fondo completo con aceleración por hardware que dibuje pequeñas partículas de luz flotando lentamente. Estas partículas reaccionarán sutilmente al movimiento del ratón (se repelerán o brillarán más al acercarse), creando un efecto envolvente y de alta gama similar al sitio de Apple.
-
-> [!TIP]
-> **Integración Completa del Chatbot:**
-> - `male_home.gif` se usará como el avatar animado principal en la sección de características del chatbot.
-> - `male.png` se usará como la miniatura de remitente para todos los mensajes entrantes (burbujas del bot).
-> - `avatar.png` se usará para crear un **botón flotante interactivo** en la esquina inferior derecha que abrirá un popup de chat de soporte rápido al pasar el cursor o hacer clic.
+Mejoraremos la adaptabilidad en dispositivos móviles de la landing page de "Latinoamérica Comparte". Actualmente, la navegación desaparece en pantallas pequeñas sin alternativa de menú, las maquetas de iPhone y el chat flotante causan problemas de desbordamiento, y los textos/espaciados se sienten excesivamente grandes. Además, implementaremos mejoras interactivas exclusivas para potenciar la experiencia premium.
 
 ---
 
-## Open Questions
+## Opiniones de Mejora (Propuestas de Nuevas Características)
 
-Ninguna. Hemos localizado con éxito los archivos `avatar.png`, `male.png` y `male_home.gif` dentro de la carpeta `assets/chatbot/` y están listos para ser enlazados.
+Para llevar esta landing page a un nivel sobresaliente de experiencia de usuario (2026 SaaS estándar), proponemos integrar las siguientes mejoras de interactividad:
+
+1. **Simulador de Pantallas Interactivo (Interactive Device Screen Switcher):**
+   - Permitir al usuario cambiar la pantalla del iPhone de la sección Hero mediante botones/selectores interactivos rápidos (ej: "Ver Splash", "Ver Login", "Ver Dashboard"). Esto simula la navegación real dentro de la aplicación móvil de manera interactiva sin tener que ir a la galería.
+2. **Bitácora de Auditoría en Tiempo Real (Live Audit Log Simulator):**
+   - Agregar una pequeña consola interactiva de "Auditoría en Vivo" bajo la tarjeta de Auditoría. Esta consola registrará dinámicamente eventos a medida que el usuario interactúa con la landing page (ej. *"15:32:01 - Editor cambió a Modo Claro"*, *"15:32:15 - Superadmin simulado inició descarga de APK"*), demostrando de forma práctica la funcionalidad de bitácora de la app.
+3. **Menú de Hamburguesa Fluido en Móvil:**
+   - Crear un menú móvil elegante con animaciones fluidas y transiciones CSS para el botón de hamburguesa (que se transforme en una 'X').
 
 ---
 
-## Proposed Changes
+## Cambios Propuestos
 
-### [Web App Component]
+### Componentes de la Web
 
-Se modificarán los archivos existentes en la raíz del proyecto:
-- [MODIFY] [index.html](file:///C:/Users/juane/WebstormProjects/appWebColCom/index.html):
-  - Añadir el elemento `<canvas id="bg-particles">` justo al iniciar el `body`.
-  - Integrar las rutas de `assets/chatbot/male_home.gif`, `assets/chatbot/male.png` en el cuerpo del chatbot y mensajes.
-  - Agregar un widget de chat flotante interactivo en la esquina inferior derecha con la foto `avatar.png`.
-- [MODIFY] [styles.css](file:///C:/Users/juane/WebstormProjects/appWebColCom/styles.css):
-  - Estilos fijos para el canvas de partículas y contenedor flotante de soporte.
-  - Efectos hover con gradientes y giros para los avatars.
-  - Ajustes en el visor de chat para incluir miniaturas de perfil.
-- [MODIFY] [script.js](file:///C:/Users/juane/WebstormProjects/appWebColCom/script.js):
-  - **Sistema de Partículas Canvas:** Dibuja y física de partículas con redimensionamiento dinámico y respuesta a coordenadas del mouse.
-  - **Chatbot Interactivo Real:** Convertir el input de texto del simulador de chat en un campo funcional donde el usuario pueda escribir. Desarrollar un sistema de respuestas clave en JS (ej. al escribir "colombia", "seguridad", "roles", responder con diálogos útiles de la app).
-  - **Animación Scroll Reveal:** Añadir animaciones de aparición al hacer scroll en las secciones del sitio.
+#### [MODIFY] [index.html](file:///C:/Users/juane/WebstormProjects/appWebColCom/index.html)
+- **Navbar:** Agregar un botón de menú hamburguesa (`<button class="nav-toggle" ...>`) para pantallas móviles.
+- **Menú Móvil Drawer:** Reestructurar la navegación para que el menú de hamburguesa despliegue un drawer responsive que contenga los enlaces de navegación, el cambio de tema y el botón de descarga.
+- **Hero Screen Switcher:** Agregar un panel de control interactivo debajo de la descripción del Hero con botones rápidos para cambiar el contenido de la pantalla del celular principal (Splash, Login, Dashboard, Chatbot).
+- **Consola de Auditoría Interactiva:** Agregar una sección/widget que simule la bitácora registrando acciones del usuario.
+
+#### [MODIFY] [styles.css](file:///C:/Users/juane/WebstormProjects/appWebColCom/styles.css)
+- **Menu Hamburguesa y Drawer:** Estilos para el botón `.nav-toggle` y del drawer móvil `.nav-menu` con efectos de desenfoque de cristal (`glassmorphism`) y transiciones de deslizamiento suaves.
+- **Tipografía y Espaciados Responsivos:** Usar tamaños de letra escalables (`clamp` o porcentuales en media queries) para los títulos y reducir los márgenes internos (`padding`) de las secciones en móviles para evitar espacios vacíos innecesarios.
+- **Ajustes de Tamaño para Teléfonos Mockups:** 
+  - Reducir el tamaño de las maquetas `.device-iphone` en móvil para que no ocupen la pantalla entera y faciliten el scroll de la página (ej. ancho de `210px` y alto de `430px` en pantallas móviles).
+  - Desactivar o suavizar el efecto de rotación 3D en móvil para evitar recortes y desplazamientos horizontales no deseados.
+- **Contenedor Flotante de Chat Responsivo:** Cambiar el ancho del widget flotante de chat en pantallas pequeñas a `width: calc(100vw - 2rem)` con un `max-width: 320px` para prevenir cualquier desborde.
+- **Estilos del Screen Switcher y Bitácora:** Estilos modernos para los controles interactivos propuestos.
+
+#### [MODIFY] [script.js](file:///C:/Users/juane/WebstormProjects/appWebColCom/script.js)
+- **Lógica del Menú Móvil:** Agregar manejadores de eventos para abrir y cerrar el menú móvil al presionar el botón de hamburguesa y cerrar el menú automáticamente al hacer clic en un enlace de navegación.
+- **Lógica del Selector de Pantallas:** Cambiar el atributo `src` de la imagen del iPhone del Hero al hacer clic en los botones selectores.
+- **Lógica de Bitácora Interactiva (Audit Logs):** Función global para registrar actividades en tiempo real del usuario en la bitácora simulada (acciones como cambiar de tema, descargar la app, interactuar con el chatbot o seleccionar roles).
 
 ---
 
 ## Plan de Verificación
 
-### Pruebas Manuales
-- Comprobar que el canvas de partículas no bloquee los clics en los botones reales (`pointer-events: none`).
-- Verificar que el chat flotante se abra y cierre correctamente y sea responsivo en móvil.
-- Probar a escribir palabras clave como "ayuda", "colombia", "roles" en la simulación de chat.
+### Pruebas de Responsividad (Mobile Emulation)
+- Probar en resoluciones comunes como iPhone SE (375px), iPhone 12/13/14 Pro (390px) y Pixel 7 (412px).
+- Comprobar que no exista desplazamiento horizontal (`overflow-x: hidden` respetado).
+- Probar la legibilidad de textos y el escalado de los iPhones en el Hero y en la Galería.
+- Probar el comportamiento del chat flotante en pantallas angostas.
+
+### Pruebas de Interactividad
+- Abrir y cerrar el menú hamburguesa móvil.
+- Hacer clic en los botones de "Ver Pantallas" en el Hero y verificar que la imagen del teléfono cambie correctamente.
+- Comprobar que las acciones del usuario (descargas, cambios de tema, clics de rol) generen registros en la consola de auditoría simulada.

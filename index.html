@@ -47,6 +47,11 @@
                     </svg>
                 </button>
                 <a href="#descarga" class="btn-header-cta">Descargar APK</a>
+                <button class="nav-toggle" id="nav-toggle-btn" aria-label="Menú de Navegación">
+                    <span class="nav-toggle-bar"></span>
+                    <span class="nav-toggle-bar"></span>
+                    <span class="nav-toggle-bar"></span>
+                </button>
             </div>
         </div>
     </header>
@@ -83,6 +88,19 @@
                         </a>
                     </div>
                 </div>
+                <!-- Selector de pantalla interactivo -->
+                <div class="hero-screen-switcher">
+                    <span class="switcher-title">📲 Simula las pantallas de la App:</span>
+                    <div class="switcher-buttons">
+                        <button class="switcher-btn active" data-screen="splash">Splash</button>
+                        <button class="switcher-btn" data-screen="login">Login</button>
+                        <button class="switcher-btn" data-screen="dashboard">Dashboard</button>
+                        <button class="switcher-btn" data-screen="adminpais">Admin País</button>
+                        <button class="switcher-btn" data-screen="solicitudes">Solicitudes</button>
+                        <button class="switcher-btn" data-screen="bitacora">Bitácora</button>
+                        <button class="switcher-btn" data-screen="chatbot">Chatbot</button>
+                    </div>
+                </div>
             </div>
             
             <div class="hero-phone-side">
@@ -92,7 +110,7 @@
                     <div class="device-island"></div>
                     <div class="device-screen">
                         <div class="device-glare"></div>
-                        <img src="assets/capturas/splash.jpg" alt="Pantalla de Carga de la App" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'280\' height=\'570\' viewBox=\'0 0 280 570\'><rect width=\'100%\' height=\'100%\' fill=\'%23070913\'/><text x=\'50%\' y=\'50%\' font-family=\'Outfit\' font-weight=\'bold\' font-size=\'24\' fill=\'%2300f2fe\' text-anchor=\'middle\'>Splash Screen</text></svg>'">
+                        <img src="assets/capturas/splash.jpg" id="hero-phone-img" alt="Pantalla de Carga de la App" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'280\' height=\'570\' viewBox=\'0 0 280 570\'><rect width=\'100%\' height=\'100%\' fill=\'%23070913\'/><text x=\'50%\' y=\'50%\' font-family=\'Outfit\' font-weight=\'bold\' font-size=\'24\' fill=\'%2300f2fe\' text-anchor=\'middle\'>Splash Screen</text></svg>'">
                     </div>
                 </div>
             </div>
@@ -603,6 +621,24 @@
                         <p>Los botones y campos se inhabilitan en la interfaz del móvil y se validan a nivel servidor para evitar saltos de seguridad ilegítimos.</p>
                     </div>
                 </div>
+            </div>
+        </div>
+
+        <!-- Consola de Auditoría Interactiva -->
+        <div class="audit-console-container">
+            <div class="audit-console-header">
+                <div class="audit-console-buttons">
+                    <span class="console-dot red"></span>
+                    <span class="console-dot yellow"></span>
+                    <span class="console-dot green"></span>
+                </div>
+                <span class="audit-console-title">AUDIT_TRAIL_LOGGER - Latinoamérica Comparte (Simulado)</span>
+                <span class="audit-console-status">LIVE_MONITORING</span>
+            </div>
+            <div class="audit-console-body" id="audit-log-terminal">
+                <div class="audit-log-entry">[SYS] 15:32:36 - Inicializando Monitor de Auditoría Regional Latam...</div>
+                <div class="audit-log-entry">[SYS] 15:32:37 - Canal HTTPS (TLS 1.3) establecido con éxito.</div>
+                <div class="audit-log-entry">[SYS] 15:32:37 - Sistema de permisos RBAC montado y en escucha.</div>
             </div>
         </div>
     </section>

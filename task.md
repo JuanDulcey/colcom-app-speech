@@ -1,10 +1,12 @@
-# Checklist: Adiciones de Partículas, Chatbot e Interactividad
+# Progreso de Implementación: Adaptabilidad Móvil y Características Interactivas
 
-- [x] Agregar el elemento Canvas `<canvas id="bg-particles">` en `index.html`.
-- [x] Implementar los estilos CSS de fondo para el canvas, e incluir los nuevos estilos para el Chat Flotante de Soporte en `styles.css`.
-- [x] Actualizar `index.html` para incorporar `assets/chatbot/male_home.gif` y `assets/chatbot/male.png` en el panel principal del chatbot, y añadir el widget flotante del chatbot en la esquina inferior derecha con `assets/chatbot/avatar.png`.
-- [x] Diseñar el sistema de partículas 2D acelerado en `script.js` con soporte para mouse-tracking.
-- [x] Diseñar un motor interactivo para el Chatbot en `script.js`, transformando la simulación en un chat funcional donde el usuario escribe en un campo real y recibe respuestas automáticas con la imagen del robot `male.png`.
-- [x] Agregar animaciones de entrada suaves (Scroll Reveal) a todas las secciones en `styles.css` y `script.js`.
-- [x] Verificar compatibilidad del canvas de partículas (asegurar que no afecte la velocidad ni tape los clics) y el funcionamiento de la ventana flotante en móviles.
-- [x] Actualizar el reporte final `walkthrough.md` en el directorio raíz.
+- [x] Reestructurar Navbar y agregar botón de menú hamburguesa en [index.html](file:///C:/Users/juane/WebstormProjects/appWebColCom/index.html)
+- [x] Incorporar la interfaz de botones del Selector de Pantallas y Consola de Auditoría en [index.html](file:///C:/Users/juane/WebstormProjects/appWebColCom/index.html)
+- [x] Estilos CSS para el botón Hamburguesa, Drawer móvil y animaciones en [styles.css](file:///C:/Users/juane/WebstormProjects/appWebColCom/styles.css)
+- [x] Corrección de tamaños y efectos 3D de las maquetas de iPhones en móvil en [styles.css](file:///C:/Users/juane/WebstormProjects/appWebColCom/styles.css)
+- [x] Optimización de anchos adaptativos en el chat flotante y paddings responsivos en [styles.css](file:///C:/Users/juane/WebstormProjects/appWebColCom/styles.css)
+- [x] Estilos modernos para los botones del selector de pantallas y la bitácora interactiva en [styles.css](file:///C:/Users/juane/WebstormProjects/appWebColCom/styles.css)
+- [x] Implementar control del menú móvil (apertura, cierre, comportamiento de enlaces) en [script.js](file:///C:/Users/juane/WebstormProjects/appWebColCom/script.js)
+- [x] Programar lógica del Selector de Pantallas del Hero en [script.js](file:///C:/Users/juane/WebstormProjects/appWebColCom/script.js)
+- [x] Desarrollar sistema dinámico de la consola de Auditoría en Vivo (Audit Logs) en [script.js](file:///C:/Users/juane/WebstormProjects/appWebColCom/script.js)
+- [x] Verificación de visualización adaptativa y pruebas de interactividad

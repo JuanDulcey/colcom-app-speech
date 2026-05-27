@@ -240,6 +240,30 @@ header.navbar-container.scrolled {
     border-color: var(--primary);
 }
 
+/* Botón Hamburguesa Móvil */
+.nav-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 24px;
+    height: 18px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 1100;
+    margin-left: 0.5rem;
+}
+
+.nav-toggle-bar {
+    width: 100%;
+    height: 2px;
+    background-color: var(--text-primary);
+    border-radius: 4px;
+    transition: var(--transition-smooth);
+    transform-origin: left center;
+}
+
 /* ==========================================================================
    SECCIONES GENERALES Y EFECTOS SCROLL REVEAL
    ========================================================================== */
@@ -1593,6 +1617,168 @@ footer.landing-footer {
 }
 
 /* ==========================================================================
+   SELECTOR DE PANTALLA HERO E INTERACTIVIDAD DE AUDITORÍA
+   ========================================================================== */
+.hero-screen-switcher {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--border-color);
+    padding: 1rem 1.25rem;
+    border-radius: var(--border-radius-md);
+    backdrop-filter: var(--glass-blur);
+    align-self: flex-start;
+    width: 100%;
+    max-width: 500px;
+}
+
+.light-mode .hero-screen-switcher {
+    background: rgba(0, 0, 0, 0.02);
+}
+
+.switcher-title {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: var(--text-primary);
+    letter-spacing: 0.02em;
+}
+
+.switcher-buttons {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.switcher-btn {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    padding: 0.4rem 0.85rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+}
+
+.light-mode .switcher-btn {
+    background: rgba(0, 0, 0, 0.03);
+}
+
+.switcher-btn:hover {
+    background: rgba(0, 242, 254, 0.08);
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+.switcher-btn.active {
+    background: var(--primary-grad);
+    border-color: transparent;
+    color: #060813;
+    box-shadow: 0 4px 12px var(--primary-glow);
+}
+
+/* Consola de Auditoría (Simulador Servidor) */
+.audit-console-container {
+    margin-top: 3rem;
+    background: #03050a;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-lg);
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+    font-family: monospace;
+    width: 100%;
+    transition: var(--transition-smooth);
+}
+
+.light-mode .audit-console-container {
+    background: #090d16;
+    border-color: rgba(0, 0, 0, 0.15);
+}
+
+.audit-console-header {
+    background: rgba(13, 17, 33, 0.8);
+    padding: 0.75rem 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--border-color);
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+.audit-console-buttons {
+    display: flex;
+    gap: 6px;
+}
+
+.console-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.console-dot.red { background: #ff5f56; }
+.console-dot.yellow { background: #ffbd2e; }
+.console-dot.green { background: #27c93f; }
+
+.audit-console-title {
+    font-family: inherit;
+    font-weight: 500;
+    color: var(--text-secondary);
+}
+
+.audit-console-status {
+    font-family: inherit;
+    color: var(--emerald);
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    animation: pulseStatus 1.5s infinite;
+}
+
+@keyframes pulseStatus {
+    0% { opacity: 0.5; }
+    50% { opacity: 1; }
+    100% { opacity: 0.5; }
+}
+
+.audit-console-body {
+    padding: 1.25rem;
+    max-height: 160px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    background: #010307;
+    text-align: left;
+}
+
+.audit-log-entry {
+    font-family: monospace;
+    font-size: 0.8rem;
+    color: #00f2fe;
+    line-height: 1.4;
+    animation: entryEntrance 0.3s ease forwards;
+}
+
+@keyframes entryEntrance {
+    from {
+        opacity: 0;
+        transform: translateY(4px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ==========================================================================
    DISEÑO ADAPTATIVO / RESPONSIVO
    ========================================================================== */
 
@@ -1654,51 +1840,201 @@ footer.landing-footer {
     header.navbar-container {
         height: 70px;
     }
+    
+    /* Mostrar botón hamburguesa */
+    .nav-toggle {
+        display: flex;
+    }
+    
+    /* Menú transformado en drawer móvil */
     .nav-menu {
-        display: none; /* Simplificado en móvil */
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 280px;
+        height: 100vh;
+        background: var(--bg-surface-opaque);
+        backdrop-filter: var(--glass-blur);
+        -webkit-backdrop-filter: var(--glass-blur);
+        border-left: 1px solid var(--border-color);
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        padding: 6.5rem 2rem 2rem 2rem;
+        gap: 1.5rem;
+        z-index: 1050;
+        transition: var(--transition-smooth);
+        box-shadow: -10px 0 35px rgba(0,0,0,0.3);
     }
+    
+    .nav-menu.active {
+        right: 0;
+        display: flex;
+    }
+    
+    .nav-menu-item {
+        width: 100%;
+    }
+    
+    .nav-menu-item a {
+        font-size: 1.1rem;
+        display: block;
+        padding: 0.5rem 0;
+        border-bottom: 1px solid rgba(255,255,255,0.03);
+    }
+    
+    .light-mode .nav-menu-item a {
+        border-bottom-color: rgba(0,0,0,0.03);
+    }
+    
+    /* Efecto hamburguesa activa (formar X) */
+    .nav-toggle.active .nav-toggle-bar:nth-child(1) {
+        transform: rotate(45deg) translate(4px, 4px);
+    }
+    .nav-toggle.active .nav-toggle-bar:nth-child(2) {
+        opacity: 0;
+        width: 0;
+    }
+    .nav-toggle.active .nav-toggle-bar:nth-child(3) {
+        transform: rotate(-45deg) translate(5px, -5px);
+    }
+
     .landing-section {
-        padding: 4.5rem 1rem;
+        padding: 3.5rem 1.25rem;
     }
+    
+    .hero-wrapper {
+        padding-top: 1.5rem;
+        padding-bottom: 2.5rem;
+        gap: 2rem;
+    }
+    
     .hero-title {
-        font-size: 2.5rem;
+        font-size: 2.4rem;
+        line-height: 1.15;
     }
+    
+    .hero-description {
+        font-size: 1.05rem;
+    }
+    
     .section-main-title {
-        font-size: 2rem;
+        font-size: 1.85rem;
+        line-height: 1.2;
     }
+    
+    .section-main-desc {
+        font-size: 1rem;
+    }
+    
+    /* Escalar tamaño de iPhones en móvil */
+    .device-iphone {
+        width: 210px;
+        height: 428px;
+        border-width: 8px;
+        border-radius: 32px;
+    }
+    
+    .device-island {
+        width: 65px;
+        height: 16px;
+        top: 8px;
+        border-radius: 8px;
+    }
+    
+    /* Desactivar inclinación 3D en móvil para evitar scroll horizontal */
+    .device-iphone.hero-tilt {
+        transform: none !important;
+        animation: heroFloatMobile 4s ease-in-out infinite alternate !important;
+    }
+    
+    /* Escalar iPhones en galería para que el scroll sea limpio y no ocupe todo el alto */
+    .gallery-scroll-container .device-iphone {
+        width: 190px;
+        height: 388px;
+        border-width: 7px;
+        border-radius: 28px;
+    }
+    
+    .gallery-card-item {
+        flex: 0 0 200px;
+        gap: 0.75rem;
+    }
+    
+    .gallery-scroll-container {
+        padding: 1.5rem 0.5rem;
+        gap: 1.5rem;
+    }
+    
+    .ecosystem-container {
+        padding: 1.5rem 1.25rem;
+        border-radius: var(--border-radius-lg);
+    }
+    
+    .chatbot-panel {
+        padding: 1.5rem 1.25rem;
+        border-radius: var(--border-radius-lg);
+    }
+    
+    .specs-card {
+        padding: 1.5rem 1.25rem;
+        border-radius: var(--border-radius-lg);
+    }
+    
+    .cta-box {
+        padding: 2.5rem 1.25rem;
+    }
+    
+    .cta-title {
+        font-size: 2rem;
+        line-height: 1.2;
+    }
+
     .features-grid {
         grid-template-columns: 1fr;
+        gap: 1.25rem;
     }
+    
     .rbac-grid {
         grid-template-columns: 1fr;
+        gap: 1.25rem;
     }
+    
     .footer-grid {
         grid-template-columns: 1fr;
         gap: 2rem;
     }
+    
     .footer-bottom-bar {
         flex-direction: column;
         text-align: center;
         gap: 0.5rem;
     }
+    
     .gallery-btn {
         width: 44px;
         height: 44px;
     }
+    
     .floating-chat-container {
         bottom: 1.25rem;
         right: 1.25rem;
     }
+    
+    /* Ancho adaptativo del chat flotante en móvil */
     .floating-chat-window {
-        width: 300px;
-        height: 400px;
+        width: calc(100vw - 2.5rem);
+        max-width: 320px;
+        height: 410px;
+        bottom: 70px;
+        right: 0;
     }
 }
 
 /* Pantallas Extra Pequeñas (< 480px) */
 @media (max-width: 480px) {
     .hero-title {
-        font-size: 2.2rem;
+        font-size: 1.85rem;
     }
     .btn-apk-download {
         width: 100%;
@@ -1709,5 +2045,19 @@ footer.landing-footer {
     .store-badges {
         flex-direction: column;
         gap: 0.75rem;
+    }
+    .eco-stats-row {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+}
+
+/* Animación de flote de iPhone móvil sin rotación 3D */
+@keyframes heroFloatMobile {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-8px);
     }
 }
