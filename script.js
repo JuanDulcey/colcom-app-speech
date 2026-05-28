@@ -757,4 +757,34 @@ document.addEventListener('DOMContentLoaded', () => {
     // Iniciar por primera vez
     startAutoCycle();
 
+    // --- COPIAR CREDENCIALES DE ACCESO AL PORTAPAPELES ---
+    const credentialCopyBtns = document.querySelectorAll('.credential-copy-btn');
+    credentialCopyBtns.forEach(btn => {
+        btn.addEventListener('click', async () => {
+            const targetId = btn.getAttribute('data-copy-target');
+            const target = document.getElementById(targetId);
+            if (!target) return;
+            const value = target.textContent.trim();
+
+            try {
+                if (navigator.clipboard && window.isSecureContext) {
+                    await navigator.clipboard.writeText(value);
+                } else {
+                    const tmp = document.createElement('textarea');
+                    tmp.value = value;
+                    tmp.style.position = 'fixed';
+                    tmp.style.opacity = '0';
+                    document.body.appendChild(tmp);
+                    tmp.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(tmp);
+                }
+                btn.classList.add('copied');
+                setTimeout(() => btn.classList.remove('copied'), 1400);
+            } catch (err) {
+                console.error('No se pudo copiar la credencial:', err);
+            }
+        });
+    });
+
 });
