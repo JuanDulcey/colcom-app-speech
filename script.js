@@ -401,6 +401,7 @@ document.addEventListener('DOMContentLoaded', () => {
         seguridad: "La aplicación móvil utiliza autenticación cifrada HTTPS (TLS 1.3). Las operaciones de los editores y administradores se auditan de forma segura e inalterable en la base de datos.",
         roles: "Los roles son: 👑 Superadmin (control total), 🌎 Admin País (control regional de un portal específico), ✍️ Editor (creación de noticias y subida de archivos) y 👁️ Invitado (solo lectura).",
         rbac: "El sistema RBAC filtra la visualización de botones a nivel móvil y bloquea operaciones en servidor. Si eres editor, no verás la bitácora ni las solicitudes pendientes.",
+        video: "Puedes ver una demostración en video de la aplicación en la sección 'Video Tour' de esta página, donde mostramos el flujo de trabajo principal.",
         tecnico: "Detalles Técnicos: Construida nativamente con Flutter & Dart. Utiliza image_picker para cámara/galería y Material Design 3. Conexiones cifradas seguras.",
         gracias: "¡Con gusto! Estoy aquí para hacer más simple la gestión de Latinoamérica Comparte. 😊"
     };
